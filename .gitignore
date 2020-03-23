@@ -1,0 +1,6 @@
+partial-cf
+simple-tg
+.terraform
+*.tfstate
+*.tfstate.backup
+cf.json
