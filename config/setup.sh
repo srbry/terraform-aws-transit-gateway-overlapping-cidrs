@@ -10,10 +10,7 @@ sudo sed -i 's/net.ipv4.ip_forward = 0/net.ipv4.ip_forward = 1/g' /etc/sysctl.co
 sudo sysctl -p /etc/sysctl.conf
 sudo service network restart
 chmod a+x /home/ec2-user/health_monitor.sh
-# TODO: FIX Logging for first run (works fine from reboot), convert to systemd?
-echo '@reboot /home/ec2-user/health_monitor.sh >> /tmp/health_monitor.log' | crontab
-at now -f /home/ec2-user/health_monitor.sh >> /tmp/health_monitor.log 2>&1
+sudo sed -i '$ a /home/ec2-user/health_monitor.sh > /tmp/health_monitor.log &' /etc/rc.d/rc.local
 chmod a+x /home/ec2-user/tgw_monitor.sh
-# TODO: FIX Logging for first run (works fine from reboot), convert to systemd?
-(crontab -l ; echo '@reboot /home/ec2-user/tgw_monitor.sh >> /tmp/tgw_monitor.log') | crontab
-at now -f /home/ec2-user/tgw_monitor.sh >> /tmp/tgw_monitor.log 2>&1
+sudo sed -i '$ a /home/ec2-user/tgw_monitor.sh > /tmp/tgw_monitor.log &' /etc/rc.d/rc.local
+at now -f /etc/rc.d/rc.local
