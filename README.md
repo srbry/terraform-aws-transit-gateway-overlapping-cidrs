@@ -2,7 +2,9 @@
 
 This repo is based on an [aws-sample](https://github.com/aws-samples/aws-transit-gateway-overlapping-cidrs).
 
-It uses the same architecture and the terraform config is named by the colors on the architecture diagram. **Note**: The CIDR ranges in the config do not match diagram below.
+It uses the same architecture and the terraform config is named by the colors on the architecture diagram.
+
+**Note**: The CIDR ranges in the config do not match diagram below.
 
 ![architecutre](docs/images/architecture.png)
 
